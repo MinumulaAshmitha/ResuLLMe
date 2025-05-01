@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Preview - ResuLLMe</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            color: #666;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .skills-list, .languages-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill, .language {
+            background-color: #f0f0f0;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .project-item {
+            margin-bottom: 1rem;
+        }
+
+        .project-name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .certification-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .no-print {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .download-btn, .print-btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .download-btn {
+            background-color: #4CAF50;
+        }
+
+        .print-btn {
+            background-color: #2196F3;
+        }
+
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="name">{{ resume.name }}</div>
+        <div class="title">{{ resume.title }}</div>
+    </div>
+
+    {% if resume.summary %}
+    <div class="section">
+        <div class="section-title">Summary</div>
+        <p>{{ resume.summary }}</p>
+    </div>
+    {% endif %}
+
+    {% if resume.education %}
+    <div class="section">
+        <div class="section-title">Education</div>
+        {% for edu in resume.education %}
+        <div class="education-item">
+            <strong>{{ edu.institution }}</strong>
+            {% if edu.location %}, {{ edu.location }}{% endif %}
+            {% if edu.degree %} - {{ edu.degree }}{% endif %}
+            {% if edu.year_range %} ({{ edu.year_range }}){% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if resume.skills %}
+    <div class="section">
+        <div class="section-title">Skills</div>
+        <div class="skills-list">
+            {% for skill in resume.skills %}
+            <span class="skill">{{ skill }}</span>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if resume.projects %}
+    <div class="section">
+        <div class="section-title">Projects</div>
+        {% for project in resume.projects %}
+        <div class="project-item">
+            <div class="project-name">{{ project.name }}</div>
+            <p>{{ project.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if resume.certifications %}
+    <div class="section">
+        <div class="section-title">Certifications</div>
+        {% for cert in resume.certifications %}
+        <div class="certification-item">
+            {{ cert.title }} - {{ cert.issuer }} ({{ cert.date }})
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if resume.languages %}
+    <div class="section">
+        <div class="section-title">Languages</div>
+        <div class="languages-list">
+            {% for language in resume.languages %}
+            <span class="language">{{ language }}</span>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="no-print">
+        <a href="/api/download/{{ session_id }}" class="download-btn">Download DOCX</a>
+        <button onclick="window.print()" class="print-btn">Print Resume</button>
+    </div>
+</body>
+</html> 

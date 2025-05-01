@@ -1,0 +1,29 @@
+/* Additional styles for the resume preview */
+/* Additional styles for the resume preview */
+.resume-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.print-only {
+    display: none;
+}
+
+@media print {
+    .no-print {
+        display: none;
+    }
+    .print-only {
+        display: block;
+    }
+    body {
+        background-color: white;
+    }
+    .resume-container {
+        box-shadow: none;
+        padding: 0;
+    }
+} 

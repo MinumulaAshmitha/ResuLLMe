@@ -1,0 +1,16 @@
+fastapi==0.104.1
+uvicorn==0.24.0
+python-docx==0.8.11
+pydantic==2.5.2
+jinja2==3.1.2
+python-multipart==0.0.6
+httpx==0.25.2
+python-jose==3.3.0
+passlib==1.7.4
+bcrypt==4.0.1
+python-dotenv==1.0.0
+markdown==3.5.1
+beautifulsoup4==4.12.2
+aiohttp==3.9.1
+python-json-logger==2.0.7
+tailwindcss==3.3.0 
