@@ -1,3 +1,4 @@
+ HEAD
 # ResuLLMe - AI Chatbot-Based Resume Builder
 
 ResuLLMe is a full-stack web application that enables users to generate professional resumes through an interactive, conversational interface. The system uses a React-based chat UI and a FastAPI backend that interacts with the Ollama (Gemma) AI model to process natural language prompts and generate resume content.
@@ -118,3 +119,5 @@ resullme/
 ## License
 
 MIT License 
+# ResuLLMe
+720b6342f44ab6150b12e28a18e7e6316d0aaf21
